@@ -4,6 +4,7 @@ import com.custom_rpc.rpc_client.proxy.RpcReference;
 import com.custom_rpc.service.IOrderService;
 import com.custom_rpc.service.ITestService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,4 +31,13 @@ public class TestController {
     public String get() {
         return testService.sayHello();
     }
+
+    @GetMapping("/param/{name}")
+    public String test2(@PathVariable("name") String name) {
+        String result = orderService.orderById(name);
+        return result;
+    }
+
+
+
 }
